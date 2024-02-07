@@ -1,12 +1,18 @@
-<div *ngFor="let contentItem of contentItems; let isFirst = first" class="content-card"
-    (click)="displayContentInfo(contentItem)" [class.first-item]="isFirst">
+<input type="text" [(ngModel)]="searchTitle" placeholder="Enter title">
+<button (click)="checkContentExists()">Check Movies</button>
 
-    <img [src]="contentItem.imgURL" class="content-card-image" height="250px" width="200px">
+<!-- Display search result message -->
+<p [ngStyle]="{'color': contentExists ? 'green' : 'red'}">{{ message }}</p>
 
-    <h2>{{ contentItem.title }}</h2>
-    <p><strong>Description:</strong> {{ contentItem.description }}</p>
-    <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
-    <p *ngIf="contentItem.type"><strong>Type: </strong>{{ contentItem.type }}</p>
-    <p *ngIf="contentItem.tags && contentItem.tags.length > 0"><strong>Tags:</strong> {{ contentItem.tags.join(', ') }}
-    </p>
-</div>
+<section>
+<h1>Empty</h1>
+<app-content-card *ngFor="let contentItem of contentItems | typereact: ''" [contentItem]="contentItem"></app-content-card>
+</section>
+<section>
+<h1>Fictional</h1>
+<app-content-card *ngFor="let contentItem of contentItems | typereact: 'Fictional'" [contentItem]="contentItem"></app-content-card>
+</section>
+<section>
+<h1>Non-Fictional</h1>
+<app-content-card *ngFor="let contentItem of contentItems | typereact: 'Non-Fictional'" [contentItem]="contentItem"></app-content-card>
+</section>
