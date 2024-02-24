@@ -4,11 +4,12 @@ import { Content } from '../helper-files/content-interface';
 import { ContentCardComponent } from '../content-card/content-card.component';
 import { TypereactPipe } from '../typereact.pipe';
 import { FormsModule } from '@angular/forms';
+import { HoverAffectDirective } from '../hover-affect.directive';
 
 @Component({
   selector: 'app-content-list',
   standalone: true,
-  imports: [CommonModule, ContentCardComponent, TypereactPipe, FormsModule],
+  imports: [CommonModule, ContentCardComponent, TypereactPipe, FormsModule,HoverAffectDirective],
   templateUrl: './content-list.component.html',
   styleUrl: './content-list.component.scss'
 })
@@ -92,7 +93,7 @@ export class ContentListComponent implements OnInit {
         title: "Agent vinod",
         description: "Movie about indian spy.",
         creator: "Saif",
-        imgURL: "https://upload.wikimedia.org/wikipedia/en/5/5e/Agent_Vinod_2.jpg",
+        imgURL: "",
         type: "Non-Fictional",
         tags: ["Spy", "Mystrey"]
       }
